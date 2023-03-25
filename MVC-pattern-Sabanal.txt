@@ -1,0 +1,42 @@
+class Person {
+  String name;
+  int age;
+  
+  Person({required this.name, required this.age});
+}
+
+class PersonView {
+  void displayPersonInfo(Person person) {
+    print('Name: ${person.name}');
+    print('Age: ${person.age}');
+  }
+}
+
+class PersonController {
+  Person? _person;
+  PersonView? _view;
+  
+  void setPerson(Person person) {
+    _person = person;
+  }
+  
+  void setView(PersonView view) {
+    _view = view;
+  }
+  
+  void updateView() {
+    _view?.displayPersonInfo(_person!);
+  }
+}
+
+// Usage
+void main() {
+  final person = Person(name: 'Janmark', age: 21);
+  final view = PersonView();
+  final controller = PersonController();
+  
+  controller.setPerson(person);
+  controller.setView(view);
+  
+  controller.updateView();
+}
